@@ -1,4 +1,6 @@
-﻿namespace ProjectApp.Model;
+﻿using System.Text.Json.Serialization;
+
+namespace ProjectApp.Model;
 
 public record Profile
 {
@@ -7,5 +9,6 @@ public record Profile
     public string Position { get; init; }
     public Status Status { get; init; }
    
-    public string FullInfo => $"{At}, {Title} -> [{Position}] : {Status} ";
+[JsonIgnore]
+    public string FullInfo => $"{At}, {Title} --> [{Position}] : {Status} ";
 }

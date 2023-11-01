@@ -26,4 +26,11 @@ public static class CLI
         Print(message,ConsoleColor.Yellow);
         return Console.ReadLine();
     }
+
+    public static void LogToConsole(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
 }

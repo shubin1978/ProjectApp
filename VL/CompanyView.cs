@@ -20,4 +20,14 @@ public static class CompanyView
             ShowObject(o);
         }
     }
-}
+
+    public static void PrintMenu()
+    {
+        CLI.PrintInfo("= M E N U = ");
+        CLI.PrintInfo("1- Список всей техники");
+        CLI.PrintInfo("2- Поиск объектов по локации");
+        CLI.PrintInfo("3- Поиск объектов по номеру ");
+        CLI.PrintInfo("4- Добавить объект");
+        CLI.PrintInfo("0- Завершение работы ");
+    }
+} 

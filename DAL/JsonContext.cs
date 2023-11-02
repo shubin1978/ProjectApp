@@ -6,11 +6,13 @@ using Object = ProjectApp.Model.Object;
 namespace ProjectApp.DAL;
 
 public class JsonContext : FileContext, IContext
-{
+{ 
     public List<Object> Objects { get; set; }
+    public event Action<string> Log;
     private readonly JsonSerializerOptions _options;
     
     public JsonContext(string pathToObjects) : base(pathToObjects)
+    //формируется автоматически при имплементации
     {
         Objects = new List<Object>();
         
@@ -23,7 +25,9 @@ public class JsonContext : FileContext, IContext
     public void ImportObjects()
     {
         var objectJson = File.ReadAllText(PathToObjects);
+        Log?.Invoke("Данные из файла считались");
         Objects = JsonSerializer.Deserialize<List<Object>>(objectJson);
+        Log?.Invoke("Десериализация удалась");
     }
 
     public void ExportObjects()
@@ -31,4 +35,4 @@ public class JsonContext : FileContext, IContext
         var objectsJson = JsonSerializer.Serialize(Objects, _options);
         File.WriteAllText(PathToObjects,objectsJson);
     }
-}
+} 
